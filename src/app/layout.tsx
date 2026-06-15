@@ -11,6 +11,15 @@ const roboto = Roboto({
 export const metadata: Metadata = {
   title: "CALMY — 콜포비아 트레이닝",
   description: "AI 시뮬레이션으로 전화 통화가 편해지는 앱",
+  icons: {
+    icon: "/calmy-app-icon.png",
+    apple: "/calmy-app-icon.png",
+  },
+  appleWebApp: {
+    capable: true,
+    title: "CALMY",
+    statusBarStyle: "default",
+  },
 };
 
 export const viewport: Viewport = {
