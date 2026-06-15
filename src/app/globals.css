@@ -1,0 +1,76 @@
+@import "tailwindcss";
+
+/* ── CALMY Design Tokens ── */
+:root {
+  --calmy-primary-600: #3C70FF;
+  --calmy-primary-500: #517FFF;
+  --calmy-primary-400: #93AFFB;
+  --calmy-primary-300: #BDCDFA;
+  --calmy-primary-200: #DBE3FB;
+  --calmy-primary-100: #E2EAFF;
+  --calmy-primary-50:  #EEF1FC;
+
+  --calmy-mascot-yellow: #FFF46C;
+  --calmy-mascot-mint:   #8DFFC3;
+  --calmy-mascot-stroke: #3C70FF;
+  --calmy-mascot-eye:    #FCFCFE;
+
+  --calmy-neutral-900: #373B45;
+  --calmy-neutral-700: #585C68;
+  --calmy-neutral-500: #858B98;
+  --calmy-neutral-400: #ACB1C0;
+  --calmy-neutral-300: #AEB4C3;
+  --calmy-neutral-200: #CBD2E3;
+  --calmy-neutral-100: #EDF0F6;
+  --calmy-neutral-50:  #FAFDFD;
+  --calmy-neutral-0:   #FCFCFE;
+  --calmy-white:       #FFFFFF;
+
+  --calmy-accent-yellow:    #FFF46C;
+  --calmy-accent-yellow-bg: #FBF6B9;
+  --calmy-accent-mint:      #8DFFC3;
+  --calmy-accent-mint-bg:   #C8FCE0;
+  --calmy-accent-green:     #03C75A;
+
+  --calmy-bg-app:         var(--calmy-neutral-50);
+  --calmy-bg-surface:     var(--calmy-white);
+  --calmy-text-primary:   var(--calmy-neutral-900);
+  --calmy-text-secondary: var(--calmy-neutral-300);
+  --calmy-text-muted:     var(--calmy-neutral-400);
+  --calmy-text-brand:     var(--calmy-primary-600);
+  --calmy-border:         var(--calmy-neutral-200);
+  --calmy-border-subtle:  var(--calmy-neutral-100);
+
+  --calmy-shadow-xs: 0 1px 2px rgba(0,0,0,0.05);
+  --calmy-shadow-sm: 0 2px 8px rgba(0,0,0,0.06);
+  --calmy-shadow-md: 0 4px 16px rgba(0,0,0,0.08);
+  --calmy-shadow-lg: 0 8px 24px rgba(60,112,255,0.16);
+
+  --calmy-duration-fast: 150ms;
+  --calmy-duration-base: 240ms;
+  --calmy-duration-slow: 400ms;
+  --calmy-easing-standard: cubic-bezier(0.2,0,0,1);
+}
+
+*, *::before, *::after { box-sizing: border-box; }
+
+html, body {
+  margin: 0; padding: 0;
+  font-family: "Roboto", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  background: var(--calmy-bg-app);
+  color: var(--calmy-text-primary);
+  -webkit-font-smoothing: antialiased;
+}
+
+/* 모바일 앱 컨테이너 */
+.app-shell {
+  max-width: 390px;
+  min-height: 100dvh;
+  margin: 0 auto;
+  background: var(--calmy-bg-app);
+  position: relative;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  padding-top: env(safe-area-inset-top);
+}
