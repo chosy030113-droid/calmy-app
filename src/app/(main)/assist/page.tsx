@@ -1,5 +1,5 @@
 "use client";
-import { useState, useRef, useLayoutEffect, useCallback } from "react";
+import { useState, useRef, useLayoutEffect, useEffect, useCallback } from "react";
 import { Bell, MessageSquare, BarChart2, ChevronRight, Phone, Mic, X } from "lucide-react";
 import Link from "next/link";
 import { useStore } from "@/lib/store";
@@ -20,6 +20,9 @@ function DrumRoll({
 }) {
   const ref = useRef<HTMLDivElement>(null);
   const [localIdx, setLocalIdx] = useState(initialIndex);
+  const localIdxRef = useRef(initialIndex);
+  const onSelectRef = useRef(onSelect);
+  useEffect(() => { onSelectRef.current = onSelect; }, [onSelect]);
 
   useLayoutEffect(() => {
     if (ref.current) {
@@ -27,13 +30,30 @@ function DrumRoll({
     }
   }, []);
 
+  useEffect(() => {
+    const el = ref.current;
+    if (!el) return;
+    const handleWheel = (e: WheelEvent) => {
+      e.preventDefault();
+      const dir = e.deltaY > 0 ? 1 : -1;
+      const next = Math.max(0, Math.min(items.length - 1, localIdxRef.current + dir));
+      localIdxRef.current = next;
+      setLocalIdx(next);
+      onSelectRef.current(next);
+      el.scrollTo({ top: next * ITEM_H, behavior: "smooth" });
+    };
+    el.addEventListener("wheel", handleWheel, { passive: false });
+    return () => el.removeEventListener("wheel", handleWheel);
+  }, [items.length]);
+
   const handleScroll = useCallback(() => {
     if (!ref.current) return;
     const idx = Math.round(ref.current.scrollTop / ITEM_H);
     const clamped = Math.max(0, Math.min(items.length - 1, idx));
+    localIdxRef.current = clamped;
     setLocalIdx(clamped);
-    onSelect(clamped);
-  }, [items.length, onSelect]);
+    onSelectRef.current(clamped);
+  }, [items.length]);
 
   return (
     <div style={{ position: "relative", height: ITEM_H * 5, overflow: "hidden", flex: 1 }}>

@@ -62,6 +62,7 @@ export default function NotificationsPage() {
               </div>
             </div>
             <div
+              onClick={onToggle}
               style={{
                 width: 48,
                 height: 28,
@@ -69,6 +70,7 @@ export default function NotificationsPage() {
                 background: on ? "var(--calmy-primary-600)" : "var(--calmy-neutral-200)",
                 position: "relative",
                 cursor: "pointer",
+                transition: "background 200ms",
               }}
             >
               <div
