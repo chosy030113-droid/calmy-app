@@ -11,6 +11,7 @@ export default function LoginPage() {
 
   const handleLogin = () => {
     if (!email || !password) return;
+    localStorage.setItem("calmy-onboarded", "true");
     router.push("/");
   };
 
@@ -134,7 +135,7 @@ export default function LoginPage() {
 
       {/* 소셜 로그인 (카카오) */}
       <button
-        onClick={() => router.push("/")}
+        onClick={() => { localStorage.setItem("calmy-onboarded", "true"); router.push("/"); }}
         style={{
           width: "100%",
           padding: "15px",

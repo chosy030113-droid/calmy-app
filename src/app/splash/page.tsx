@@ -6,7 +6,10 @@ export default function SplashPage() {
   const router = useRouter();
 
   useEffect(() => {
-    const t = setTimeout(() => router.push("/onboarding"), 2400);
+    const t = setTimeout(() => {
+      const done = localStorage.getItem("calmy-onboarded");
+      router.push(done ? "/" : "/onboarding");
+    }, 2400);
     return () => clearTimeout(t);
   }, [router]);
 

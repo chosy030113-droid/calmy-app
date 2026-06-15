@@ -5,7 +5,7 @@ export default function manifest(): MetadataRoute.Manifest {
     name: "CALMY — 콜포비아 트레이닝",
     short_name: "CALMY",
     description: "AI 시뮬레이션으로 전화 통화가 편해지는 앱",
-    start_url: "/",
+    start_url: "/splash",
     display: "standalone",
     background_color: "#F5F7FF",
     theme_color: "#3C70FF",
